@@ -212,10 +212,10 @@
         <script>
          jQuery(document).ready(function($){
                         var ias = jQuery.ias( {
-                          container: ".item-container",
-                          item: ".item",
-                          pagination: ".nav-links",
-                          next: ".nav-links .next",
+                          container: ".<?php echo carbon_get_theme_option('ais_container'); ?>",
+                          item: ".<?php echo carbon_get_theme_option('ais_item'); ?>",
+                          pagination: ".<?php if( !empty( carbon_get_theme_option('ais_pagination') ) ) : echo carbon_get_theme_option('ais_pagination'); else: ?>nav-links<?php endif; ?>",
+                          next: ".<?php if( !empty( carbon_get_theme_option('ais_pagination') ) ) : echo carbon_get_theme_option('ais_pagination'); else: ?>nav-links <?php endif; ?>.<?php if( !empty( carbon_get_theme_option('ais_next') ) ) : echo carbon_get_theme_option('ais_next'); else: ?>next<?php endif; ?>",
                         } );
                         ias.extension( new IASTriggerExtension( { offset: 1 } ) );
                         ias.extension( new IASSpinnerExtension() );
