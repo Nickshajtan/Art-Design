@@ -84,6 +84,7 @@ gulp.task('compressim', function() {
 
 gulp.task('watch', ['styles', 'styles_two', 'js', 'js-two', 'ajax', 'compressim', 'browser-sync'], function() {
 	gulp.watch('app/'+syntax+'/**/*.'+syntax+'', ['styles']);
+	gulp.watch('app/'+syntax_two+'/**/*.'+syntax_two+'', ['styles_two']);
 	gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['js']);
 	gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['js-two']);
 	gulp.watch(['libs/**/*.js', 'app/js/ajax.js'], ['ajax']);
