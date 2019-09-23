@@ -207,7 +207,8 @@
         });
     </script>
     <?php endif; ?>
-    <?php if( is_home() || is_category() || is_archive() || is_tax() ) : ?>
+    <?php $ais = carbon_get_theme_option('ais'); ?>
+    <?php if( ( is_home() || is_category() || is_archive() || is_tax() ) && $ais ) : ?>
         <script>
          jQuery(document).ready(function($){
                         var ias = jQuery.ias( {
