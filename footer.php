@@ -217,7 +217,7 @@
                           pagination: ".<?php if( !empty( carbon_get_theme_option('ais_pagination') ) ) : echo carbon_get_theme_option('ais_pagination'); else: ?>nav-links<?php endif; ?>",
                           next: ".<?php if( !empty( carbon_get_theme_option('ais_pagination') ) ) : echo carbon_get_theme_option('ais_pagination'); else: ?>nav-links <?php endif; ?>.<?php if( !empty( carbon_get_theme_option('ais_next') ) ) : echo carbon_get_theme_option('ais_next'); else: ?>next<?php endif; ?>",
                         } );
-                        ias.extension( new IASTriggerExtension( { offset: <?php if( !empty( carbon_get_theme_option('ais_offset') && is_int()( carbon_get_theme_option('ais_offset') ) ) ) : echo carbon_get_theme_option('ais_offset'); else: echo 1; endif; ?> } ) );
+                        ias.extension( new IASTriggerExtension( { offset: <?php if( !empty( carbon_get_theme_option('ais_offset') ) && is_int( carbon_get_theme_option('ais_offset') ) ) : echo carbon_get_theme_option('ais_offset'); else: echo 1; endif; ?> } ) );
                         ias.extension( new IASSpinnerExtension() );
                         ias.extension( new IASNoneLeftExtension() );  
          });
