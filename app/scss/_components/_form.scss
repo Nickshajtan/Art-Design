@@ -1,0 +1,33 @@
+form{
+    .form-title{
+        margin-bottom: 30px;
+    }
+    .form-label{
+        margin-bottom: 15px;
+        cursor: pointer;
+    }
+    .check{
+        border-color: $black;
+        &.active{
+            background-color: $black;
+            border: 1px solid $black;
+        }
+    }
+    input[type=submit]{
+        height: 55px;
+        width: 320px;
+        max-width: 100%;
+        margin-top: 100px;
+        font-size: $regular * 1.5;
+    }
+}
+textarea{
+    border: 1px solid $black;
+}
+@media screen and ( max-width: 700px ){
+    form{
+        textarea, textarea.w-50{
+            width: 100%!important;
+        }
+    }
+}

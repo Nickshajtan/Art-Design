@@ -1,0 +1,177 @@
+footer{
+    padding: 100px 0 100px 0;
+    background-color: $black;
+    overflow-x: hiddenö
+}
+.grid{
+    &.footer-grid{
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-gap: 30px;
+        padding: 0 30px;
+        width: 100%;
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            margin-bottom: 2.5rem;
+            li{
+                margin-bottom: 0.6rem;
+                a{
+                    font-weight: $light;
+                    @include fonts(inherit, $century, ( $regular * 0.8 ), $regular);
+                }
+            }
+        }
+        .menu{
+            li{
+                margin-bottom: 1.5rem;
+                a{
+                    font-weight: $middle;
+                    @include fonts($white, $century, $regular, $regular );
+                }
+            }
+        }
+        p{
+            margin-bottom: 2rem;
+            .title{
+                font-weight: $middle;
+                @include fonts(inherit, $century, ($regular * 1.2), $regular );
+            }
+        }
+    }
+    .contact-part{
+        margin-bottom: 1.5rem;
+    }
+    .copyright{
+        @include fonts($white, $century, ($regular * 0.6), $regular );
+    }
+    a, a:focus,a:hover{
+        text-decoration: none;
+        box-shadow: none;
+        border: none;
+        outline: none;
+    }
+    a{
+        &:after{
+                display: block;
+                content: "";
+                height: 1px;
+                width: 0%;
+                background-color: $red;
+                transition: width .3s ease-in-out;
+            }
+            &:hover:after, &:focus:after {
+                width: 30%;
+            }
+    }
+    .social-wrapper a{
+        &:after{
+            content: "";
+        }
+        &:hover{
+            transition: .3s;
+            transform: scale(.9);
+        }
+        &:hover:after, &:focus:after {
+                width: 0;
+        }
+    }
+}
+a.logo{
+    &:after{
+        content: "";
+        height: 0;
+        width: 0%;
+    }
+    &:focus, &:hover{
+        &:after{
+            width: 0;
+        }
+    }
+}
+@media screen and (max-width:1200px){
+    .grid.footer-grid{
+        grid-template-columns: 1fr 1fr;
+        max-width: 100%;
+        .grid-box{
+            height: max-content;
+            &.box-one{
+                grid-column-start: 2;
+                grid-column-end: 2;
+                grid-row-start: 1;
+                grid-row-end: 1;
+            }
+            &.box-two{
+                grid-column-start: 1;
+                grid-column-end: 1;
+                grid-row-start: 1;
+                grid-row-end: 1;
+            }
+            &.box-three{
+                grid-column-start: 1;
+                grid-column-end: 1;
+                grid-row-start: 2;
+                grid-row-end: 2;
+            }
+            &.box-four{
+                grid-column-start: 1;
+                grid-column-end: 1;
+                grid-row-start: 3;
+                grid-row-end: 3;
+            }
+            &.box-five{
+                grid-column-start: 2;
+                grid-column-end: 2;
+                grid-row-start: 2;
+                grid-row-end: 2;
+            }
+        }
+    }
+}
+@media screen and ( max-width: 768px ){
+    footer{
+        padding: 30px 0;
+        .grid.footer-grid{
+            grid-gap: 20px;
+            .menu li{
+                margin-bottom: 1rem;
+                a{
+                    font-size: $regular * .9;
+                    line-height: $regular * .9;
+                }
+            }
+            p{
+                margin-bottom: 1rem;
+                .title{
+                    font-size: $regular * .9;
+                    line-height: $regular * .9;
+                }
+            }
+            .contact-part{
+                margin-bottom: 1rem;
+                font-size: $regular * .9;
+                line-height: $regular * .9;
+            }
+        }
+    } 
+}
+@media screen and ( max-width: 700px ){
+    footer{
+        .w-50{
+            width: 100%!important;
+        }
+    }
+}
+@media screen and (max-width:359px){
+    footer{
+        .container-fluid{
+            padding: 0 25px;
+            .grid.footer-grid{
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 0;
+                max-width: 100%;
+                padding: 0;
+            }
+        }
+    }
+}

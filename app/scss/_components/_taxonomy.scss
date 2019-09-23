@@ -1,0 +1,275 @@
+@import "vars"; 
+.grid-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: max-content;
+    grid-auto-rows: max-content;
+    padding: 60px;
+    grid-gap: 30px;
+    article{
+            max-height: 380px;
+            overflow: hidden;
+    }
+}
+aside{
+    padding-bottom: 100px;
+    h2{
+        font-size: ($regular * 1.2);
+        margin-bottom: 0;
+        font-weight: $middle;
+        color: $white;
+    }
+    .categories {
+        p{
+                margin: 0;
+                padding: 0;
+                font-weight: 300;
+                color: $white;
+        }
+        a{
+            margin-bottom: 30px;
+            font-weight: $light;
+        &:hover, &:focus{
+                text-decoration: none;
+                box-shadow: none;
+                outline: none;
+                border:none;
+                color: $white;
+            }
+        } 
+    }
+    .categories.cut{
+        a{
+            margin-bottom: 40px;
+            
+            &:hover, &:focus{
+                text-decoration: none;
+                box-shadow: none;
+                outline: none;
+                border:none;
+            }
+            &:after{
+                display: block;
+                content: "";
+                height: 1px;
+                width: 0%;
+                background-color: $red;
+                transition: width .3s ease-in-out;
+            }
+            &:hover:after, &:focus:after {
+                width: 70%;
+            }
+        }
+    }
+    &:after{
+            content: '';
+            width:65%;
+            height: 70px;
+            display: block;
+            background-color: $white;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+    }
+}
+.check{
+    display: block;
+    width: 24px;
+    height: 24px;
+    border: 1px solid $white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 20px;
+    transition: .2s;
+    &.active{
+        background-color: $red;
+        border: 1px solid $red;
+    }
+}
+.article-wrapper{
+    position: relative;
+    height: 100%;
+    max-height: 380px;
+    img{
+            width: auto;
+            height: 100%;
+            object-fit: cover;
+    }
+    .title{
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 25px 15px;
+        width: 80%;
+        background: rgba(49, 49, 49, 0.75);
+        transition: width .3s ease-in-out;
+        width: 0;
+        display: none;
+        word-break: break-word;
+    }
+    .ask{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        font-size: $regular * 1.5;
+        padding: 15px 10px;
+        background: rgba(255, 255, 255, 0.75);
+        width: 80%;
+        color: $black;
+        transition: height .3s ease-in-out;
+        height: 0;
+        word-break: break-word;
+        display: none;
+        &.main{
+            width: 100%;
+            font-size: $regular * 1.2;
+            height: auto;
+            word-break: break-word;
+        }
+    }
+    &:hover, &:focus{
+        .ask{
+            height: auto;
+            display: block;
+        }
+        .title{
+            width: 80%;
+            display: block;
+        }
+    }
+}
+@media screen and (max-width: 1200px){
+    .grid-content{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .article-wrapper{
+        .title{
+            display: block;
+            width: 100%;
+        }
+        .ask{
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    }
+    aside{
+        h2{
+            color: $black;
+        }
+        .categories {
+            p{
+                color: $black;
+            }
+            a{
+                color: $black;
+            }
+        }
+    }
+    aside.padding-50{
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 60px;
+        position: relative;
+        z-index: 10;
+        &:after{
+            display: none;
+        }
+        .accordeon-header{
+            padding: 0 10px; 
+            float: left;
+            position: absolute;
+            width: 50%;
+            top: 0;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            z-index: 10;
+            &[data-for="category"]{
+                left: 0;
+            }
+            &[data-for="brand"]{
+                right: 0;
+            }
+            &:after{
+                right: 0;
+            }
+        }
+        .accordeon-text{
+            padding: 15px;
+            display: none;
+            position: absolute;
+            top: 60px;
+            width: 100%;
+            height: auto;
+            z-index: 11;
+            &.active{
+                display: block;
+                &[data-body="brand"]:before{
+                    content: '';
+                    width: 50%;
+                    position: absolute;
+                    top: -61px;
+                    left: 0;
+                    height: 62px;
+                    background-color: $black;
+                }
+                &[data-body="category"]:before{
+                    content: '';
+                    width: 50%;
+                    position: absolute;
+                    top: -61px;
+                    right: 0;
+                    height: 62px;
+                    background-color: $black;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 1000px){
+    .grid-content{
+        grid-template-columns: 1fr 1fr;
+        article{
+            max-height: 250px;
+        }
+    }
+    .article-wrapper{
+        max-height: 250px;
+        .ask.main, .ask, .title{
+            font-size: $regular;
+            padding: 10px 5px;
+        }
+    }
+}
+@media screen and (max-width: 760px){
+    .grid-content{
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 15px;
+        padding: 30px 15px;
+        article{
+            max-height: 200px;
+        }
+    }
+    .article-wrapper{
+        max-height: 200px;
+        .ask.main, .ask, .title{
+            font-size: $regular * 0.8;
+        }
+    }
+}
+//Pagination
+.pagination{
+    padding: 15px;
+    a{
+        color: $red;
+    }
+}
+.ias-trigger.ias-trigger-next center a{
+    color: $red;
+    transition: .2s;
+    &:hover, &:focus{
+        text-decoration: underline;
+        color: $red;
+    }
+}

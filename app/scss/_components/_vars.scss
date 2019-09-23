@@ -1,0 +1,26 @@
+$default-font: "roboto-example", sans-serif;
+$accent: orange;
+
+/** Colors **/
+$white:     #ffffff;
+$night:     #000000;
+$black:     #313131;
+$black_lt:  rgba(49,49,49, .8);
+$grey:      rgba(0, 0, 0, 0.5);
+$grey_lt:   #F0F0F0;
+$red:       #E51F32;
+
+/** Fonts **/
+$century: 'Century Gothic';
+
+/** Sizes **/
+$large:     5.25rem;
+$big:       3.75rem;
+$regular:   1rem;
+@media screen and (min-width: 1900px){
+    $regular: 1.15rem;
+}
+
+/** Weight **/
+$light: 300;
+$middle: 500;

@@ -1,0 +1,131 @@
+//Payment page
+.sale-methods{
+    h2{
+        font-size: $regular *  1.5;
+    }
+    .count{
+        color: $red;
+        font-size: 3rem;
+        ol{
+            list-style-type: upper-roman;
+            list-style-position: inside;
+            margin: 0;
+            padding: 0;
+        }
+    }
+    .bold-wrapper{
+        padding: 25px 0 15px 0;
+        min-height: 100px;
+    }
+}
+@media screen and ( max-width: 768px ){
+    .sale-methods{
+        .bold-wrapper{
+            b{
+                font-weight: normal;
+                font-size: .9rem;
+            }
+        }
+    }
+}
+//Contact page
+.contact-info{
+    color: $black;
+    a, a:focus, a:hover{
+        color: $black;
+        text-decoration: none;
+    }
+    a.white__btn{
+        &:hover, &:focus{
+            color: $white;
+        }
+    }
+}
+@media screen and ( max-width: 1024px ){
+    .contact-info{margin-top: 50px;}
+}
+//404 Error page
+.big-text{
+    @include fonts(inherit, $century, 18rem, 18rem );
+}
+.middle-text{
+    @include fonts(inherit, $century, ( $regular *1.8 ), ( $regular *2 ) );
+}
+.rectangle-wrapper{
+    position: relative;
+    &:after{
+        content: '';
+        position: absolute;
+        width: 160px;
+        height: 160px;
+        background: $red;
+        top: -100px;
+        right: -40px;
+        z-index: 5;
+    }
+    &:before{
+        content: '';
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background: $red;
+        bottom: -25px;
+        left: 50px;
+        z-index: 5;
+    }
+}
+.rectangle-black{
+    background-color: $black;
+    background-image: url(../img-optimize/lines.svg);
+    background-position: right;
+    background-repeat: no-repeat;
+    opacity: .9;
+    height: 500px;
+    width: 500px;
+    max-width: 100%;
+    position: relative;
+    z-index: 10;
+}
+@media screen and ( max-width: 1200px ){
+    .rectangle-wrapper{
+        margin-bottom: 80px;
+        &:before{
+            left: 260px;
+        }
+        &:after{
+            right: 120px;
+        }
+    }
+}
+@media screen and ( max-width: 768px ){
+    .rectangle-wrapper{
+        margin-bottom: 80px;
+        &:before{
+            left: 150px;
+        }
+        &:after{
+            right: 0;
+        }
+    }
+}
+@media screen and ( max-width: 700px ){
+    .rectangle-wrapper{
+        &:before{
+            left: 80px;
+            width: 30px;
+            height: 30px;
+            bottom: -15px;
+        }
+        &:after{
+            width: 80px;
+            height: 80px;
+            top: -50px;
+            right: 10px;
+        }
+        .rectangle-black{
+            width: 250px;
+            height: 250px;
+            background-position: 185px;
+        }
+    }
+}

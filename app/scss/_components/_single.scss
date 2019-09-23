@@ -1,0 +1,70 @@
+.single-content-wrapper{
+    h2{
+        font-size: $regular *  1.5;
+        line-height: 1;
+        padding-top: 0;
+        padding-bottom: 1rem;
+        margin-bottom: 0;
+    }
+    .single-content{
+        padding-bottom: .9rem;
+    }
+}
+.single-slider{
+    img{
+        max-height: 600px;
+        object-fit: cover;
+        width: 100%;
+    }
+    .slick .slick-dots, .slider .slick-dots{
+        bottom: 8px;
+        right: 0;
+    }
+}
+.single-add{
+    padding: 25px 0 0 0;
+}
+.red-text{
+    color: $red;
+    text-decoration: underline;
+    &:focus, &:hover{
+        color: $red;
+    }
+}
+@media screen and (max-width: 1200px){
+    .accordeon-header{
+        position: relative;
+        &:after{
+            content: url(../img-optimize/triangle.svg);
+            position: absolute;
+            right: 20px;
+            transform: rotate(180deg);
+            transition: .3s;
+        }
+        &.active{
+            &:after{
+                transform: rotate(0deg);
+            }
+        }
+    }
+    .accordeon-text{
+        visibility: hidden;
+        height: 0;
+        transition: height .3s ease-in-out;
+        &.active{
+            visibility: visible;
+            height: 100%;
+        }
+    }   
+}
+@media screen and (max-width: 768px){
+    .single-slider{
+        .slick .slick-dots, .slider .slick-dots{
+            width: 70%;
+            height: 80px;
+        }
+    }
+    .single-add{
+        padding: 35px 15px 0 15px;
+    }
+}
