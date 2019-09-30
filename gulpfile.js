@@ -77,7 +77,7 @@ gulp.task('ajax', function() {
 });
 
 gulp.task('compressim', function() {
-    return gulp.src('app/img/*')
+    return gulp.src('app/img/**/*')
     .pipe(imagemin())
     .pipe(gulp.dest('app/img-optimize'))
 });
