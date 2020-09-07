@@ -8,7 +8,6 @@
  *
  * @package yp
  */
-
 ?>
 
 	</div><!-- #content -->
@@ -207,17 +206,17 @@
         });
     </script>
     <?php endif; ?>
-    <?php $ais = carbon_get_theme_option('ais'); ?>
+    <?php $ais = get_field('ais', 'options'); ?>
     <?php if( ( is_home() || is_category() || is_archive() || is_tax() ) && $ais ) : ?>
         <script>
          jQuery(document).ready(function($){
                         var ias = jQuery.ias( {
-                          container: ".<?php echo carbon_get_theme_option('ais_container'); ?>",
-                          item: ".<?php echo carbon_get_theme_option('ais_item'); ?>",
-                          pagination: ".<?php if( !empty( carbon_get_theme_option('ais_pagination') ) ) : echo carbon_get_theme_option('ais_pagination'); else: ?>nav-links<?php endif; ?>",
-                          next: ".<?php if( !empty( carbon_get_theme_option('ais_pagination') ) ) : echo carbon_get_theme_option('ais_pagination'); else: ?>nav-links <?php endif; ?>.<?php if( !empty( carbon_get_theme_option('ais_next') ) ) : echo carbon_get_theme_option('ais_next'); else: ?>next<?php endif; ?>",
+                          container: ".<?php echo $ais['ais_container']; ?>",
+                          item: ".<?php echo $ais['ais_item']; ?>",
+                          pagination: ".<?php if( !empty( $ais['ais_pagination'] ) ) : echo $ais['ais_pagination']; else: ?>nav-links<?php endif; ?>",
+                          next: ".<?php if( !empty( $ais['ais_pagination'] ) ) : echo $ais['ais_pagination']; else: ?>nav-links <?php endif; ?>.<?php if( !empty( $ais['ais_next'] ) ) : echo $ais['ais_next']; else: ?>next<?php endif; ?>",
                         } );
-                        ias.extension( new IASTriggerExtension( { offset: <?php if( !empty( carbon_get_theme_option('ais_offset') ) && is_int( carbon_get_theme_option('ais_offset') ) ) : echo carbon_get_theme_option('ais_offset'); else: echo 1; endif; ?> } ) );
+                        ias.extension( new IASTriggerExtension( { offset: <?php if( !empty( $ais['ais_offset'] ) && is_int( $ais['ais_offset'] ) ) : echo $ais['ais_offset']; else: echo 1; endif; ?> } ) );
                         ias.extension( new IASSpinnerExtension() );
                         ias.extension( new IASNoneLeftExtension() );  
          });

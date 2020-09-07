@@ -45,7 +45,7 @@ function ajax_mail_function(){
 //Create Mail post type
 add_action( 'init', 'cpt_mail_calback' );
 function cpt_mail_calback() {
-    $panel_save = carbon_get_theme_option('panel');
+    $panel_save = get_option('_option_panel');
     if( $panel_save ){
         $labels = array(
             "name" => __("Mail"),

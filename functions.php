@@ -122,7 +122,7 @@ function include_styles() {
     $url = 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';
     $response = wp_remote_get($url);
     $code = wp_remote_retrieve_response_code( $response );
-    $b4 = carbon_get_theme_option('b4');
+    $b4 = get_field('b4', 'options');
     if( $b4 ){
         if ( !is_wp_error( $response ) ){
             if( isset( $url ) && !empty( $url) && ( $code == '200') ){
@@ -146,7 +146,7 @@ function include_styles() {
             wp_enqueue_style( 'main' );
         }
     }
-    $slick = carbon_get_theme_option('slick');
+    $slick = get_field('slick', 'options');
     if( ( is_home() || is_front_page() || is_single() ) && $slick ){
         wp_register_style( 'slick',  get_template_directory_uri() . '/app/libs/jquery/slick/slick.css', array(), ' ' );
         wp_enqueue_style( 'slick');
@@ -155,7 +155,7 @@ function include_styles() {
     }
     wp_register_style( 'fonts',  get_template_directory_uri() . '/app/fonts/fonts.css', array(), ' ' );
     wp_enqueue_style( 'fonts');
-    $fancybox = carbon_get_theme_option('fancybox');
+    $fancybox = get_field('fancybox', 'options');
     if( ( is_home() || is_front_page() || is_single() ) && $fancybox ){
         wp_register_style( 'fancybox',  get_template_directory_uri() . '/app/libs/jquery/fancybox/fancybox.min.css', array(), ' ' );
         wp_enqueue_style( 'fancybox');
@@ -196,22 +196,22 @@ function include_scripts() {
 	        wp_enqueue_script( 'scripts');
     }	
     /** Other **/
-    $slick = carbon_get_theme_option('slick');
+    $slick = get_field('slick', 'options');;
     if(( is_home() || is_front_page() || is_single() ) && $slick ){
             wp_register_script( 'slick', get_template_directory_uri() . '/app/libs/jquery/slick/slick.js', array(), null, true);
 	        wp_enqueue_script( 'slick');
     }
-    $masonry = carbon_get_theme_option('masonry');
+    $masonry = get_field('masonry', 'options');
     if( ( is_home() || is_front_page() ) && $masonry ){
             wp_register_script( 'my_masonry', get_template_directory_uri() . '/app/libs/jquery/masonry.min.js', array(), null, true);
 	        wp_enqueue_script( 'my_masonry');
     }
-    $fancybox = carbon_get_theme_option('fancybox');
+    $fancybox = get_field('fancybox', 'options');;
     if( ( is_home() || is_front_page() || is_single() || is_page() ) && $fancybox ){
             wp_register_script( 'my_fancybox', get_template_directory_uri() . '/app/libs/jquery/fancybox/fancybox.min.js', array(), null, true);
 	        wp_enqueue_script( 'my_fancybox');
     }
-    $ais = carbon_get_theme_option('ais');
+    $ais = get_field('ais', 'options');
     if( ( is_home() || is_category() || is_archive() || is_tax() ) && $ais ){
             wp_register_script( 'ais', get_template_directory_uri() . '/app/libs/jquery/ais.js', array(), null, true);
 	        wp_enqueue_script( 'ais');

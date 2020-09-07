@@ -20,7 +20,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-<?php echo carbon_get_theme_option('body_scripts'); ?>
+<?php wp_body_open(); ?>
 <div id="page" class="site">
 
 	<header class="site-header <?php if( is_home() || is_front_page() ) : ?> black__bg<?php else : ?> grey__bg<?php endif; ?>">

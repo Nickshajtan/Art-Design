@@ -12,7 +12,27 @@ var syntax_two        = 'sass';
 		wait          = require("gulp-wait"),
 		notify        = require("gulp-notify"),
 		rsync         = require("gulp-rsync"),
-        imagemin      = require('gulp-imagemin')
+        imagemin      = require('gulp-imagemin');
+var notifyOptions = {
+  message : 'Error:: <%= error.message %> \nLine:: <%= error.line %> \nCode:: <%= error.extract %>'
+};
+
+function browserSync(done) {
+	browsersync.init({
+        //Domen name or main directory ( choose server or proxy )
+        //server: "passagency",  //server + /sync-options = settings 
+        proxy: "passagency.com", //proxy + /sync-options = settings
+        notify: false,
+        //port: 8080, 3000
+        //open: true,
+        //files: ;
+	});
+    done();
+}
+
+function browserSyncReload() {
+  browsersync.reload();
+}
 
 gulp.task('browser-sync', function() {
 	browsersync({
@@ -77,19 +97,19 @@ gulp.task('ajax', function() {
 });
 
 gulp.task('compressim', function() {
-    return gulp.src('app/img/**/*')
+    return gulp.src('app/img/*')
     .pipe(imagemin())
     .pipe(gulp.dest('app/img-optimize'))
 });
 
-gulp.task('watch', ['styles', 'styles_two', 'js', 'js-two', 'ajax', 'compressim', 'browser-sync'], function() {
-	gulp.watch('app/'+syntax+'/**/*.'+syntax+'', ['styles']);
-	gulp.watch('app/'+syntax_two+'/**/*.'+syntax_two+'', ['styles_two']);
-	gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['js']);
-	gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['js-two']);
-	gulp.watch(['libs/**/*.js', 'app/js/ajax.js'], ['ajax']);
-	gulp.watch('app/img/*', ['compressim']);
-    gulp.watch('*.php', browsersync.reload)
+gulp.task('watch', function() {
+	gulp.watch('app/'+syntax+'/**/*.'+syntax+'', gulp.series('styles')).on( 'change', browserSyncReload );
+	gulp.watch('app/'+syntax_two+'/**/*.'+syntax_two+'', gulp.series('styles_two')).on( 'change', browserSyncReload );
+	gulp.watch(['libs/**/*.js', 'app/js/common.js'], gulp.series('js')).on( 'change', browserSyncReload );
+	gulp.watch(['libs/**/*.js', 'app/js/common.js'], gulp.series('js-two')).on( 'change', browserSyncReload );
+	gulp.watch(['libs/**/*.js', 'app/js/ajax.js'], gulp.series('ajax')).on( 'change', browserSyncReload );
+	gulp.watch('app/img/*', gulp.series('compressim')).on( 'change', browserSyncReload );
+    gulp.watch('**/*.php').on('change', browserSyncReload);
 });
 
-gulp.task('default', ['watch']);
+gulp.task('default', gulp.parallel('watch', browserSync));

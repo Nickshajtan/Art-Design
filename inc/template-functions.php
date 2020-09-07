@@ -1,16 +1,5 @@
 <?php
 require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-/*** Enable Carbon Fields ***/
-add_action( 'after_setup_theme', 'crb_load' );
-function crb_load() {
-        load_template( get_template_directory() . '/inc/carbon-fields/vendor/autoload.php' );
-        \Carbon_Fields\Carbon_Fields::boot();
-}
-add_action( 'carbon_fields_register_fields', 'estore_register_custom_fields' );
-function estore_register_custom_fields() {
-        require get_template_directory() . '/inc/custom-fields-options/metabox.php';
-        require get_template_directory() . '/inc/custom-fields-options/theme-options.php';
-}
 
 /*** If used ACF this code will add seting page ***/
 if( is_plugin_active('advanced-custom-fields-pro-master/acf.php') ){
@@ -38,14 +27,6 @@ if ( function_exists( 'add_image_size' ) ) {
     add_image_size( 'tovar', 600, 600, array( 'left', 'top'));
     add_image_size( 'logo', 140, 125, array( 'left', 'top'));
     add_image_size( 'social', 24, 24, array( 'left', 'top'));
-}
-add_action( 'init', 'custom_image_sizes' );
-function custom_image_sizes(){
-    if ( !empty( carbon_get_theme_option( 'group' ) ) ){
-        foreach ( carbon_get_theme_option( 'group' ) as $one ){
-            add_image_size( $one['custom_im_size_name'], $one['custom_im_size_width'], $one['custom_im_size_height'], array( 'left', 'top'));
-        }
-    }
 }
 
 //Remove admin pages
